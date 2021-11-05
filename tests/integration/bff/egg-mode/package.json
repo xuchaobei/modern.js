@@ -1,0 +1,33 @@
+{
+  "private": true,
+  "name": "@integration-test/bff-egg",
+  "version": "0.3.4",
+  "scripts": {
+    "dev": "modern dev",
+    "build": "modern build",
+    "deploy": "modern deploy",
+    "preview": "modern deploy --mode preview",
+    "build:modern": "modern build --modern",
+    "deploy:local": "modern deploy --mode local",
+    "start": "modern start",
+    "new": "modern new",
+    "test": "modern test"
+  },
+  "dependencies": {
+    "@modern-js/runtime": "workspace:^1.0.0",
+    "@modern-js/plugin-bff": "workspace:^1.0.0",
+    "@modern-js/plugin-egg": "workspace:^1.0.0",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
+  },
+  "devDependencies": {
+    "@modern-js/app-tools": "workspace:^1.0.0"
+  },
+  "eslint": {
+    "extends": [
+      "@modern-js"
+    ]
+  },
+  "browserslist": {},
+  "__project_id__": "a6a4b250-0f6f-11eb-b625-dfd9ee18b20d"
+}

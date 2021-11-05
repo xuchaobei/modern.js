@@ -1,0 +1,17 @@
+{
+  "extends": ["@modern-js"],
+  "globals": {
+    "Gulu": true
+  },
+  "rules": {
+    "import/no-anonymous-default-export": "off",
+    "filenames/match-exported": "off",
+    "@typescript-eslint/require-await": "off",
+    "require-atomic-updates": "off",
+    "consistent-return": "off",
+    "no-console": "off",
+    "@typescript-eslint/no-empty-interface": "off",
+    "@typescript-eslint/no-unused-vars": "off",
+    "require-await": "off"
+  }
+}

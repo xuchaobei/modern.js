@@ -1,0 +1,16 @@
+{
+  "extends": "@modern-js/tsconfig/base",
+  "exclude": ["dist", "node_modules"],
+  "compilerOptions": {
+    "declaration": false,
+    "rootDir": "../",
+    "plugins": [
+      {
+        "transform": "ts-transform-paths"
+      }
+    ],
+    "paths": {
+      "@src/*": ["../src/*"]
+    }
+  }
+}
