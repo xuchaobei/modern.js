@@ -10,6 +10,8 @@ interface Options {
   config?: string;
   registry?: string;
   distTag?: string;
+  plugin?: string[];
+  solutions?: string;
 }
 
 type RunnerTask = Array<{
@@ -21,7 +23,16 @@ const REPO_GENERAROE = '@modern-js/repo-generator';
 
 // eslint-disable-next-line max-statements
 function getDefaultConfing(options: Options, logger: Logger) {
-  const { mwa, library, monorepo, config, registry, distTag } = options;
+  const {
+    mwa,
+    library,
+    monorepo,
+    config,
+    registry,
+    distTag,
+    plugin,
+    solutions,
+  } = options;
 
   let initialConfig: Record<string, unknown> = {};
 
@@ -61,6 +72,20 @@ function getDefaultConfing(options: Options, logger: Logger) {
   }
 
   initialConfig.defaultBranch = initialConfig.defaultBranch || 'main';
+  if (plugin) {
+    initialConfig.plugins = plugin;
+  }
+
+  if (solutions) {
+    try {
+      initialConfig.solutions = JSON.parse(solutions);
+    } catch (e) {
+      logger.error('solutions parameter format is incorrect');
+      logger.debug('parse solutions error: ', e);
+      // eslint-disable-next-line no-process-exit
+      process.exit(1);
+    }
+  }
 
   return initialConfig;
 }
