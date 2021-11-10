@@ -119,4 +119,15 @@ export const EN_LOCALE = {
       no: 'Not Enabled',
     },
   },
+  plugin: {
+    solutionKey: {
+      self: 'Solution Key',
+      no_empty: 'The solution key cannot be empty!',
+    },
+    solutionName: {
+      self: 'Solution Name',
+      no_empty: 'The solution name cannot be empty!',
+    },
+    baseSolution: 'Base Solution',
+  },
 };
