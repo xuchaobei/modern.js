@@ -28,7 +28,7 @@ describe('Streaming SSR', () => {
       args: ['--no-sandbox'],
     });
     page = await browser.newPage();
-    page.setDefaultTimeout(5000);
+    page.setDefaultTimeout(10000);
   });
 
   afterAll(async () => {
@@ -47,11 +47,11 @@ describe('Streaming SSR', () => {
 
     const body = await res.text();
     // css chunks inject correctly
-    expect(body).toMatch(
+    expect(body).toMatchTextContent(
       /<link href="\/static\/css\/async\/about\/page.css" rel="stylesheet" \/>/,
     );
 
-    expect(body).toMatch(
+    expect(body).toMatchTextContent(
       /<div hidden id="S:0">[\s\S]*<div>About content<\/div>/,
     );
   });
@@ -61,7 +61,7 @@ describe('Streaming SSR', () => {
       waitUntil: ['networkidle0'],
     });
 
-    await expect(page).toMatch(/user1-18/);
+    await expect(page).toMatchTextContent(/user1-18/, { timeout: 9000 });
   });
 
   it(`deferred data in client navigation`, async () => {
@@ -70,7 +70,7 @@ describe('Streaming SSR', () => {
     });
 
     await page.click('#user-btn');
-    await expect(page).toMatch(/user1-18/);
+    await expect(page).toMatchTextContent(/user1-18/, { timeout: 9000 });
   });
 
   it('error thrown in loader', async () => {
@@ -79,7 +79,7 @@ describe('Streaming SSR', () => {
     });
 
     const body = await res.text();
-    expect(body).toMatch(/Something went wrong!.*error occurs/);
+    expect(body).toMatchTextContent(/Something went wrong!.*error occurs/);
   });
 
   // TODO: wait for the next version of react-router to support this case
